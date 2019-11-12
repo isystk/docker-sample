@@ -7,7 +7,6 @@ Nginx、Apache、Mysql などのDocker環境構築サンプルです。
 
 こだわり
 ・イメージファイルを小さくするためにAlpineをベースにしています。
-・指定したバージョンを利用できるようにソースコードからMakeしています。
 
 ## Demo
 
@@ -31,9 +30,9 @@ options = "metadata"
 ```
 
 ### 使い方
-$ ./dc.sh -hUsage:
+$ dc.sh -h
 ```
-  dc.sh [command] [<options>]
+Usage:  dc.sh [command] [<options>]
 
 Options:
   stats|st          Dockerコンテナの状態を表示します。
@@ -52,7 +51,7 @@ Options:
 
 ## Install
 
-vi ./.env
+vi .env
 ```
 PROJECT_NAME=<利用するプロジェクト名>
 ```
