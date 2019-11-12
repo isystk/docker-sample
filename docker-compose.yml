@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  
+  nginx:
+    image: ${PROJECT_NAME}/nginx
+    build:
+      context: "./nginx"
+      dockerfile: "Dockerfile"
+    ports:
+     - "80:80"
+     - "443:443"
+    restart: always
+    volumes:
+     - ./nginx/conf.d:/etc/nginx/conf.d
+     - ./nginx/ssl:/etc/nginx/ssl
+     - ./nginx/html:/usr/share/nginx/html
+     - ./nginx/logs:/var/log/nginx
+
+  apache:
+    image: ${PROJECT_NAME}/apache
+    build:
+      context: "./apache"
+      dockerfile: "Dockerfile"
+    ports:
+     - "80:80"
+     - "443:443"
+    restart: always
+    volumes:
+     - ./apache/conf.d:/etc/apache2/conf.d
+     - ./apache/ssl:/etc/apache2/ssl
+     - ./apache/html:/var/www/localhost/htdocs
+     - ./apache/logs:/var/log/apache2
+
+  mysql:
+    image: ${PROJECT_NAME}/mysql
+    build:
+      context: "./mysql"
+      dockerfile: "Dockerfile"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+     - "3306:3306"
+    restart: always
+    volumes:
+     - ./mysql/conf.d:/etc/mysql/conf.d
+     - ./mysql/data:/var/lib/mysql
+     - ./mysql/logs:/var/log/mysql
+  #        #DBの実体をおいておく
+  #   - ./mysql/init:/docker-entrypoint-initdb.d
+  #        #MySQL初回起動時の走らせたいsqlとかshとかを渡すため
+
