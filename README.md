@@ -11,30 +11,25 @@ Nginx、Apache、Mysql などのDocker環境構築サンプルです。
 ### ディレクトリ構造
 ```
 .
-├── docker （各種Daemon）
-│   │
-│   ├── nginx （Webサーバー）
-│   │   ├── conf.d (nginxの設定ファイル)
-│   │   ├── html (nginxの公開ディレクトリ)
-│   │   ├── conf.d (nginxの設定ファイル)
-│   │   └── logs （nginxのログ）
-│   ├── apache （Webサーバー）
-│   │   ├── conf.d (apacheの設定ファイル)
-│   │   ├── html (apacheの公開ディレクトリ)
-│   │   └── logs （apacheのログ）
-│   └── mysql （DBサーバー）
-│   │   ├── conf.d (mysqlの設定ファイル)
-│   │   ├── data (mysqlのデータファイル)
-│   │   ├── init （mysqlの初期DDL）
-│   │   ├── logs （mysqlのログ）
-│   │   └── script （mysql関連のスクリプト）
-│   └── php （PHP-FRM）
-│   │   └── logs （phpのログ）
-│   └── phpmyadmin （DB管理ツール）
-│
-├── public （公開ディレクトリ）
+├── nginx （Webサーバー）
+│   ├── conf.d (nginxの設定ファイル)
+│   ├── html (nginxの公開ディレクトリ)
+│   ├── conf.d (nginxの設定ファイル)
+│   └── logs （nginxのログ）
+├── apache （Webサーバー）
+│   ├── conf.d (apacheの設定ファイル)
+│   ├── html (apacheの公開ディレクトリ)
+│   └── logs （apacheのログ）
+└── mysql （DBサーバー）
+│   ├── conf.d (mysqlの設定ファイル)
+│   ├── data (mysqlのデータファイル)
+│   ├── init （mysqlの初期DDL）
+│   ├── logs （mysqlのログ）
+│   └── script （mysql関連のスクリプト）
+└── php （PHP-FRM）
+│   └── logs （phpのログ）
+└── phpmyadmin （DB管理ツール）
 ├── dc.sh （Dockerの起動用スクリプト）
-└── src （自作テンプレート）
 ```
 
 ## Demo
