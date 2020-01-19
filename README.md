@@ -20,16 +20,16 @@ Nginx、Apache、Mysql などのDocker環境構築サンプルです。
 │   ├── conf.d (apacheの設定ファイル)
 │   ├── html (apacheの公開ディレクトリ)
 │   └── logs （apacheのログ）
-└── mysql （DBサーバー）
+├── mysql （DBサーバー）
 │   ├── conf.d (mysqlの設定ファイル)
 │   ├── data (mysqlのデータファイル)
 │   ├── init （mysqlの初期DDL）
 │   ├── logs （mysqlのログ）
 │   └── script （mysql関連のスクリプト）
-└── php （PHP-FRM）
+├── php （PHP-FRM）
 │   └── logs （phpのログ）
-└── phpmyadmin （DB管理ツール）
-├── dc.sh （Dockerの起動用スクリプト）
+├── phpmyadmin （DB管理ツール）
+└── dc.sh （Dockerの起動用スクリプト）
 ```
 
 ## Demo
