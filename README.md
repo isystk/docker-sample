@@ -8,6 +8,35 @@ Nginx、Apache、Mysql などのDocker環境構築サンプルです。
 こだわり
 ・イメージファイルを小さくするためにAlpineをベースにしています。
 
+### ディレクトリ構造
+```
+.
+├── docker （各種Daemon）
+│   │
+│   ├── nginx （Webサーバー）
+│   │   ├── conf.d (nginxの設定ファイル)
+│   │   ├── html (nginxの公開ディレクトリ)
+│   │   ├── conf.d (nginxの設定ファイル)
+│   │   └── logs （nginxのログ）
+│   ├── apache （Webサーバー）
+│   │   ├── conf.d (apacheの設定ファイル)
+│   │   ├── html (apacheの公開ディレクトリ)
+│   │   └── logs （apacheのログ）
+│   └── mysql （DBサーバー）
+│   │   ├── conf.d (mysqlの設定ファイル)
+│   │   ├── data (mysqlのデータファイル)
+│   │   ├── init （mysqlの初期DDL）
+│   │   ├── logs （mysqlのログ）
+│   │   └── script （mysql関連のスクリプト）
+│   └── php （PHP-FRM）
+│   │   └── logs （phpのログ）
+│   └── phpmyadmin （DB管理ツール）
+│
+├── public （公開ディレクトリ）
+├── dc.sh （Dockerの起動用スクリプト）
+└── src （自作テンプレート）
+```
+
 ## Demo
 
 ## VS. 
@@ -45,6 +74,10 @@ Options:
   mysql start       MySQLを起動します。
   mysql stop        MySQLを停止します。
   mysql restart     MySQLを再起動します。
+  php start         PHPを起動します。
+  php stop          PHPを停止します。
+  phpmyadmin start         phpmyadminを起動します。
+  phpmyadmin stop          phpmyadminを停止します。
   --version, -v     バージョンを表示します。
   --help, -h        ヘルプを表示します。
 ```

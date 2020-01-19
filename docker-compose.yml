@@ -29,7 +29,7 @@ services:
     volumes:
      - ./apache/conf.d:/etc/apache2/conf.d
      - ./apache/ssl:/etc/apache2/ssl
-     - ./apache/html:/var/www/localhost/htdocs
+     - ./apache/html:/var/www/html
      - ./apache/logs:/var/log/apache2
 
   mysql:
@@ -46,7 +46,29 @@ services:
      - ./mysql/conf.d:/etc/mysql/conf.d
      - ./mysql/data:/var/lib/mysql
      - ./mysql/logs:/var/log/mysql
-  #        #DBの実体をおいておく
-  #   - ./mysql/init:/docker-entrypoint-initdb.d
-  #        #MySQL初回起動時の走らせたいsqlとかshとかを渡すため
 
+  php:
+    image: ${PROJECT_NAME}/php
+    build:
+      context: "./php"
+      dockerfile: "Dockerfile"
+    restart: always
+    volumes:
+     - ./php/logs:/var/log/php
+     - ./apache/html:/var/www/html
+
+  phpmyadmin:
+    image: ${PROJECT_NAME}/phpmyadmin
+    build:
+      context: "./phpmyadmin"
+      dockerfile: "Dockerfile"
+    ports:
+      - 8888:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=password
+    volumes:
+      - "./phpmyadmin/sessions:/sessions"
+ 

@@ -21,6 +21,10 @@ Options:
   mysql start       MySQLを起動します。
   mysql stop        MySQLを停止します。
   mysql restart     MySQLを再起動します。
+  php start         PHPを起動します。
+  php stop          PHPを停止します。
+  phpmyadmin start         phpmyadminを起動します。
+  phpmyadmin stop          phpmyadminを停止します。
   --version, -v     バージョンを表示します。
   --help, -h        ヘルプを表示します。
 EOF
@@ -82,6 +86,34 @@ case ${1} in
           ;;
           login)
               mysql -u root -ppassword -h 127.0.0.1  
+          ;;
+          *)
+              usage
+          ;;
+      esac
+    ;;
+
+    php)
+      case ${2} in
+          start)
+              docker-compose up -d php
+          ;;
+          stop)
+              docker-compose stop php && docker-compose rm -fv php
+          ;;
+          *)
+              usage
+          ;;
+      esac
+    ;;
+
+    phpmyadmin)
+      case ${2} in
+          start)
+              docker-compose up -d phpmyadmin
+          ;;
+          stop)
+              docker-compose stop php && docker-compose rm -fv phpmyadmin
           ;;
           *)
               usage
