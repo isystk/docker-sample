@@ -25,6 +25,8 @@ Options:
   php stop          PHPを停止します。
   phpmyadmin start         phpmyadminを起動します。
   phpmyadmin stop          phpmyadminを停止します。
+  schemaspy start         schemaspyを起動します。
+  schemaspy stop          schemaspyを停止します。
   --version, -v     バージョンを表示します。
   --help, -h        ヘルプを表示します。
 EOF
@@ -113,7 +115,23 @@ case ${1} in
               docker-compose up -d phpmyadmin
           ;;
           stop)
-              docker-compose stop php && docker-compose rm -fv phpmyadmin
+              docker-compose stop phpmyadmin && docker-compose rm -fv phpmyadmin
+          ;;
+          *)
+              usage
+          ;;
+      esac
+    ;;
+
+    schemaspy)
+      case ${2} in
+          start)
+              docker-compose up -d nginx_for_schemaspy &&
+              docker-compose up -d schemaspy
+          ;;
+          stop)
+              docker-compose stop nginx_for_schemaspy && docker-compose rm -fv nginx_for_schemaspy &&
+              docker-compose stop schemaspy && docker-compose rm -fv schemaspy
           ;;
           *)
               usage
