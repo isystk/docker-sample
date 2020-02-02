@@ -51,7 +51,8 @@ case ${1} in
         rm -Rf ./apache/logs/*
         rm -Rf ./php/logs/*
         rm -Rf ./schemaspy/html/*
-        rm -Rf ./jenkins/jenkins_home/*
+        rm -Rf ./jenkins/jobs/*
+        rm -Rf ./jenkins/secrets/*
     ;;
 
     nginx)

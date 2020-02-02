@@ -98,5 +98,6 @@ services:
     ports:
       - "18080:8080"
     volumes:
-      - ./jenkins/jenkins_home:/var/jenkins_home:rw
+      - ./jenkins/jobs:/var/jenkins_home/jobs:rw
+      - ./jenkins/secrets/initialAdminPassword:/var/jenkins_home/secrets/initialAdminPassword:rw
       
