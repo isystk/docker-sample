@@ -88,3 +88,15 @@ services:
       - TZ=Asia/Tokyo
     working_dir: "/app"
     command: "java -jar schemaspy.jar"
+
+  jenkins:
+    image: ${PROJECT_NAME}/jenkins2.204.2
+    container_name: jenkins
+    build:
+      context: "./jenkins"
+      dockerfile: "Dockerfile"
+    ports:
+      - "18080:8080"
+    volumes:
+      - ./jenkins/jenkins_home:/var/jenkins_home:rw
+      

@@ -27,6 +27,8 @@ Options:
   phpmyadmin stop          phpmyadminを停止します。
   schemaspy exec           schemaspyを実行します。
   schemaspy init           schemaspyを初期化します。
+  jenkins start         jenkinsを起動します。
+  jenkins stop          jenkinsを停止します。
   --version, -v     バージョンを表示します。
   --help, -h        ヘルプを表示します。
 EOF
@@ -39,6 +41,17 @@ function version {
 case ${1} in
     stats|st)
         docker container stats
+    ;;
+
+    init)
+        # 停止＆削除（コンテナ・イメージ・ボリューム）
+        docker-compose down --rmi all --volumes
+        rm -Rf ./mysql/data/*
+        rm -Rf ./mysql/logs/*
+        rm -Rf ./apache/logs/*
+        rm -Rf ./php/logs/*
+        rm -Rf ./schemaspy/html/*
+        rm -Rf ./jenkins/jenkins_home/*
     ;;
 
     nginx)
@@ -131,6 +144,20 @@ case ${1} in
           ;;
           exec)
               docker-compose up -d schemaspy
+          ;;
+          *)
+              usage
+          ;;
+      esac
+    ;;
+
+    jenkins)
+      case ${2} in
+          start)
+              docker-compose up -d jenkins
+          ;;
+          stop)
+              docker-compose stop jenkins && docker-compose rm -fv jenkins
           ;;
           *)
               usage

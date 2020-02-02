@@ -29,6 +29,7 @@ Nginx、Apache、Mysql などのDocker環境構築サンプルです。
 ├── php （PHP-FRM）
 │   └── logs （phpのログ）
 ├── phpmyadmin （DB管理ツール）
+├── schemaspy （ER図）
 └── dc.sh （Dockerの起動用スクリプト）
 ```
 
