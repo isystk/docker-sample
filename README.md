@@ -74,6 +74,8 @@ Options:
   php stop          PHPを停止します。
   phpmyadmin start         phpmyadminを起動します。
   phpmyadmin stop          phpmyadminを停止します。
+  schemaspy exec           schemaspyを実行します。
+  schemaspy init           schemaspyを初期化します。
   --version, -v     バージョンを表示します。
   --help, -h        ヘルプを表示します。
 ```

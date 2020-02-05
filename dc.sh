@@ -11,24 +11,23 @@ Usage:
   $(basename ${0}) [command] [<options>]
 
 Options:
-  stats|st          Dockerコンテナの状態を表示します。
-  nginx start       Nginxを起動します。
-  nginx stop        Nginxを停止します。
-  nginx restart     Nginxを再起動します。
-  apache start      Apacheを起動します。
-  apache stop       Apacheを停止します。
-  apache restart    Apacheを再起動します。
-  mysql start       MySQLを起動します。
-  mysql stop        MySQLを停止します。
-  mysql restart     MySQLを再起動します。
-  php start         PHPを起動します。
-  php stop          PHPを停止します。
+  stats|st                 Dockerコンテナの状態を表示します。
+  init                     Dockerコンテナ・イメージ・生成ファイルの状態を初期化します。
+  nginx start              Nginxを起動します。
+  nginx stop               Nginxを停止します。
+  nginx restart            Nginxを再起動します。
+  apache start             Apacheを起動します。
+  apache stop              Apacheを停止します。
+  apache restart           Apacheを再起動します。
+  mysql start              MySQLを起動します。
+  mysql stop               MySQLを停止します。
+  mysql restart            MySQLを再起動します。
+  php start                PHPを起動します。
+  php stop                 PHPを停止します。
   phpmyadmin start         phpmyadminを起動します。
   phpmyadmin stop          phpmyadminを停止します。
   schemaspy exec           schemaspyを実行します。
   schemaspy init           schemaspyを初期化します。
-  jenkins start         jenkinsを起動します。
-  jenkins stop          jenkinsを停止します。
   --version, -v     バージョンを表示します。
   --help, -h        ヘルプを表示します。
 EOF
@@ -51,8 +50,6 @@ case ${1} in
         rm -Rf ./apache/logs/*
         rm -Rf ./php/logs/*
         rm -Rf ./schemaspy/html/*
-        rm -Rf ./jenkins/jobs/*
-        rm -Rf ./jenkins/secrets/*
     ;;
 
     nginx)
@@ -145,20 +142,6 @@ case ${1} in
           ;;
           exec)
               docker-compose up -d schemaspy
-          ;;
-          *)
-              usage
-          ;;
-      esac
-    ;;
-
-    jenkins)
-      case ${2} in
-          start)
-              docker-compose up -d jenkins
-          ;;
-          stop)
-              docker-compose stop jenkins && docker-compose rm -fv jenkins
           ;;
           *)
               usage
