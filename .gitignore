@@ -8,7 +8,3 @@ mysql/data
 
 # schemaspy
 schemaspy/html
-
-# jenkins
-jenkins/secrets
-
