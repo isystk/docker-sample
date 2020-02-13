@@ -11,25 +11,27 @@ Nginx、Apache、Mysql などのDocker環境構築サンプルです。
 ### ディレクトリ構造
 ```
 .
-├── nginx （Webサーバー）
-│   ├── conf.d (nginxの設定ファイル)
-│   ├── html (nginxの公開ディレクトリ)
-│   ├── conf.d (nginxの設定ファイル)
-│   └── logs （nginxのログ）
-├── apache （Webサーバー）
-│   ├── conf.d (apacheの設定ファイル)
-│   ├── html (apacheの公開ディレクトリ)
-│   └── logs （apacheのログ）
-├── mysql （DBサーバー）
-│   ├── conf.d (mysqlの設定ファイル)
-│   ├── data (mysqlのデータファイル)
-│   ├── init （mysqlの初期DDL）
-│   ├── logs （mysqlのログ）
-│   └── script （mysql関連のスクリプト）
-├── php （PHP-FRM）
-│   └── logs （phpのログ）
-├── phpmyadmin （DB管理ツール）
-├── schemaspy （ER図）
+├── docker
+│  ├── nginx （Webサーバー）
+│  │   ├── conf.d (nginxの設定ファイル)
+│  │   ├── html (nginxの公開ディレクトリ)
+│  │   ├── conf.d (nginxの設定ファイル)
+│  │   └── logs （nginxのログ）
+│  ├── apache （Webサーバー）
+│  │   ├── conf.d (apacheの設定ファイル)
+│  │   └── logs （apacheのログ）
+│  ├── mysql （DBサーバー）
+│  │   ├── conf.d (mysqlの設定ファイル)
+│  │   ├── data (mysqlのデータファイル)
+│  │   ├── init （mysqlの初期DDL）
+│  │   ├── logs （mysqlのログ）
+│  │   └── script （mysql関連のスクリプト）
+│  ├── php （PHP-FRM）
+│  │   └── logs （phpのログ）
+│  ├── phpmyadmin （DB管理ツール）
+│  ├── .env
+│  └── docker-compose.yml
+├── public (apacheの公開ディレクトリ)
 └── dc.sh （Dockerの起動用スクリプト）
 ```
 
@@ -60,22 +62,11 @@ $ dc.sh -h
 Usage:  dc.sh [command] [<options>]
 
 Options:
-  stats|st          Dockerコンテナの状態を表示します。
-  nginx start       Nginxを起動します。
-  nginx stop        Nginxを停止します。
-  nginx restart     Nginxを再起動します。
-  apache start      Apacheを起動します。
-  apache stop       Apacheを停止します。
-  apache restart    Apacheを再起動します。
-  mysql start       MySQLを起動します。
-  mysql stop        MySQLを停止します。
-  mysql restart     MySQLを再起動します。
-  php start         PHPを起動します。
-  php stop          PHPを停止します。
-  phpmyadmin start         phpmyadminを起動します。
-  phpmyadmin stop          phpmyadminを停止します。
-  schemaspy exec           schemaspyを実行します。
-  schemaspy init           schemaspyを初期化します。
+  stats|st                 Dockerコンテナの状態を表示します。
+  init                     Dockerコンテナ・イメージ・生成ファイルの状態を初期化します。
+  start                    すべてのDaemonを起動します。
+  stop                     すべてのDaemonを停止します。
+  mysql login              MySQLデータベースにログインします。
   --version, -v     バージョンを表示します。
   --help, -h        ヘルプを表示します。
 ```
