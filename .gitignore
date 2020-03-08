@@ -4,7 +4,4 @@
 !.gitkeep
 
 # mysql
-mysql/data
-
-# schemaspy
-schemaspy/html
+docker/mysql/data
