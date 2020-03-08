@@ -71,12 +71,38 @@ Options:
   --help, -h        ヘルプを表示します。
 ```
 
+ダミーのSMTPサーバー
+http://localhost:8025/
+
+テストメール送信
+```
+{
+ sleep 0.3;
+ echo 'ehlo';
+ sleep 0.3;
+ echo 'MAIL FROM:<from@example.com>';
+ sleep 0.3;
+ echo 'RCPT TO: <rcpt@example.com>';
+ sleep 0.3;
+ echo 'DATA';
+ sleep 0.3;
+ echo -e 'Subject: test\n\n'
+ echo -e 'To:yousan@example.com\n\n'
+ echo -e 'From:fromheader@example.com\n\n'
+ echo -e 'this is body\n'
+ echo '.';
+} | telnet localhost 25
+```
+
+
 ## Install
 
-vi .env
+$ vi docker/.env
 ```
 PROJECT_NAME=<利用するプロジェクト名>
 ```
+
+$ dc.sh start
 
 ## Contribution
 

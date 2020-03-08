@@ -77,9 +77,9 @@ services:
     volumes:
      - "./phpmyadmin/sessions:/sessions"
  
-  postfix:
-    image: djfarrelly/maildev
-    container_name: ${PROJECT_NAME}-postfix
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: ${PROJECT_NAME}-mailhog
     ports:
-      - "25:25"
-      - "1080:80"
+      - 8025:8025
+      - 25:1025
